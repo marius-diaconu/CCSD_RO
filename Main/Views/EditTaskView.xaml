@@ -1,0 +1,452 @@
+﻿<Page x:Class="Main.Views.EditTaskView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Main.Views"
+             mc:Ignorable="d" FontSize="14" 
+             d:DesignHeight="450" d:DesignWidth="800" 
+             WindowTitle="Pagina Editare Task-uri">
+    <!-- Edit Task Content Section -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        <!-- Edit Task Stack Panel Row 1 -->
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="10" />
+                </Grid.RowDefinitions>
+                <!-- Edit Task Name Stack Panel -->
+                <StackPanel Grid.Column="0" Grid.Row="0" x:Name="TaskNameStackPanel" Margin="0 15 0 0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <!-- Edit Task Name Label Row 0 -->
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Actualizează Nume Task" Margin="0 0 0 5"></TextBlock>
+                        <!-- Edit Task Name Text Box Row 1 -->
+                        <TextBox Grid.Column="0" Grid.Row="1" x:Name="TaskName" MouseEnter="TaskName_OnMouseEnter" Padding="5"></TextBox>
+                    </Grid>
+                </StackPanel>
+                <!-- Task Type Stack Panel Row 1 -->
+                <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="0 15 0 0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <!-- Task Type TextBlock -->
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Tip Task:" Margin="0 0 10 0"></TextBlock>
+                        <!-- Task Type Directory Clear Stack Panel -->
+                        <StackPanel Grid.Column="1" Grid.Row="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <CheckBox Grid.Column="0" Grid.Row="0" x:Name="DirectoryClearCheckbox" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              MouseEnter="TaskTypeClear_OnMouseEnter" Checked="DirectoryClearCheckbox_Checked" Click="DirectoryClearCheckbox_Clicked"></CheckBox>
+                                <TextBlock Grid.Column="1" Grid.Row="0" Text="Curățare" Margin="5 0 0 0"></TextBlock>
+                            </Grid>
+                        </StackPanel>
+                        <!-- Task Type Directory Copy Stack Panel -->
+                        <StackPanel Grid.Column="2" Grid.Row="0" Margin="20 0 0 0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <CheckBox Grid.Column="0" Grid.Row="0" x:Name="DirectoryCopyCheckbox" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              MouseEnter="TaskTypeCopy_OnMouseEnter" Checked="DirectoryCopyCheckbox_Checked"></CheckBox>
+                                <TextBlock Grid.Column="1" Grid.Row="0" Text="Copiere" Margin="5 0 0 0"></TextBlock>
+                            </Grid>
+                        </StackPanel>
+                        <!-- Task Type Sync One-Way Stack Panel -->
+                        <StackPanel Grid.Column="3" Grid.Row="0" Margin="20 0 0 0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <CheckBox Grid.Column="0" Grid.Row="0" x:Name="OneWaySyncCheckbox" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              MouseEnter="TaskTypeOneWaySync_OnMouseEnter" Checked="OneWaySyncCheckbox_Checked"></CheckBox>
+                                <TextBlock Grid.Column="1" Grid.Row="0" Text="Sincronizare sursă =&gt; destinație" Margin="5 0 0 0"></TextBlock>
+                            </Grid>
+                        </StackPanel>
+                        <!-- Task Type Sync Both-Ways Stack Panel -->
+                        <StackPanel Grid.Column="4" Grid.Row="0" Grid.ColumnSpan="3" Margin="20 0 0 0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <CheckBox Grid.Column="0" Grid.Row="0" x:Name="BothWaysSyncCheckbox" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              MouseEnter="TaskTypeBothWaysSync_OnMouseEnter" Checked="BothWaysSyncCheckbox_Checked"></CheckBox>
+                                <TextBlock Grid.Column="1" Grid.Row="0" Text="Sincronizare sursă &lt;=&gt; destinație" Margin="5 0 0 0"></TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                <!-- Directories Paths Stack Panel Row 2 -->
+                <StackPanel Grid.Column="0" Grid.Row="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <!-- Choose Sourse Directory Stack Panel -->
+                        <StackPanel Grid.Column="0" Grid.Row="0" Margin="0 15 0 0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <!-- Choose Source Directory Stack Panel -->
+                                <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="0 0 0 5">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <!-- Choose Source Directory Label -->
+                                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Actualizează dosarul sursă" Margin="0 0 0 5"></TextBlock>
+                                        <!-- With Subdirectories CheckBox -->
+                                        <CheckBox Grid.Column="1" Grid.Row="0" x:Name="WithSubDir" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              MouseEnter="WithSubDir_OnMouseEnter" Margin="20 0 0 0"></CheckBox>
+                                        <TextBlock Grid.Column="2" Grid.Row="0" Text="cu subdosare" Margin="5 0 0 0"></TextBlock>
+                                    </Grid>
+                                </StackPanel>
+                                <!-- Choose Source Directory Input Field -->
+                                <TextBox Grid.Column="0" Grid.Row="1" x:Name="SourceDirectoryPath" VerticalAlignment="Center" MinWidth="200" 
+                                         MouseEnter="SourceDirPath_OnMouseEnter" Padding="5" IsReadOnly="True"/>
+                                <!-- Choose Source Directory Button -->
+                                <Button Grid.Column="1" Grid.Row="1" x:Name="SelectSourceDirectory" Content="Selectează" Padding="20 2" Margin="10 0 0 0" Cursor="Hand">
+                                    <Button.Effect>
+                                        <DropShadowEffect Opacity="0.25" Color="#FF252525"/>
+                                    </Button.Effect>
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFAEAEAE" Offset="1"/>
+                                            <GradientStop Color="#FFFFF5F5"/>
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                        <!-- Choose Destination Directory Stack Panel -->
+                        <StackPanel Grid.Column="0" Grid.Row="1" Margin="0 15 0 0" x:Name="DestDirPanel" Visibility="Visible">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <!-- Choose Destination Directory Label -->
+                                <TextBlock Grid.Column="0" Grid.Row="0" Text="Actualizează dosarul destinație" Margin="0 0 0 5"></TextBlock>
+                                <!-- Choose Source Directory Input Field -->
+                                <TextBox Grid.Column="0" Grid.Row="1" x:Name="DestinationDirectoryPath" VerticalAlignment="Center" MinWidth="200"
+                                         MouseEnter="DestinationDirPath_OnMouseEnter" Padding="5"/>
+                                <!-- Choose Source Directory Button -->
+                                <Button Grid.Column="1" Grid.Row="1" x:Name="SelectDestinationDirectory" Content="Selectează" Padding="20 2" Margin="10 0 0 0" Cursor="Hand">
+                                    <Button.Effect>
+                                        <DropShadowEffect Opacity="0.25" Color="#FF252525"/>
+                                    </Button.Effect>
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFAEAEAE" Offset="1"/>
+                                            <GradientStop Color="#FFFFF5F5"/>
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                <!-- Task Repetition Stack Panel -->
+                <StackPanel Grid.Column="0" Grid.Row="3" Margin="0 15 0 0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <!-- Task Repetition TextBlock -->
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Repetare: " Margin="0 0 10 0"></TextBlock>
+                        <!-- Task Repetition Once -->
+                        <StackPanel Grid.Column="1" Grid.Row="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <CheckBox Grid.Column="0" Grid.Row="0" x:Name="OneTimeTask" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              MouseEnter="OneTimeTask_OnMouseEnter" Checked="OneTimeTask_Checked"></CheckBox>
+                                <TextBlock Grid.Column="1" Grid.Row="0" Text="o dată" Margin="5 0 0 0"></TextBlock>
+                            </Grid>
+                        </StackPanel>
+                        <!-- Task Repetition Daily -->
+                        <StackPanel Grid.Column="2" Grid.Row="0" Margin="20 0 0 0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <CheckBox Grid.Column="0" Grid.Row="0" x:Name="DailyTask" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              MouseEnter="DailyTask_OnMouseEnter" Checked="DailyTask_Checked" Click="DailyTask_Clicked"></CheckBox>
+                                <TextBlock Grid.Column="1" Grid.Row="0" Text="zilnic" Margin="5 0 0 0"></TextBlock>
+                            </Grid>
+                        </StackPanel>
+                        <!-- Task Repetition Weekly -->
+                        <StackPanel Grid.Column="3" Grid.Row="0" Margin="20 0 0 0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <CheckBox Grid.Column="0" Grid.Row="0" x:Name="WeeklyTask" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              MouseEnter="WeeklyTask_OnMouseEnter" Checked="WeeklyTask_Checked" Click="WeeklyTask_Clicked"></CheckBox>
+                                <TextBlock Grid.Column="1" Grid.Row="0" Text="săptămânal" Margin="5 0 0 0"></TextBlock>
+                            </Grid>
+                        </StackPanel>
+                        <!-- Task Repetition Monthly -->
+                        <StackPanel Grid.Column="4" Grid.Row="0" Margin="20 0 0 0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <CheckBox Grid.Column="0" Grid.Row="0" x:Name="MonthlyTask" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              MouseEnter="MonthlyTask_OnMouseEnter" Checked="MonthlyTask_Checked"></CheckBox>
+                                <TextBlock Grid.Column="1" Grid.Row="0" Text="lunar" Margin="5 0 0 0"></TextBlock>
+                            </Grid>
+                        </StackPanel>
+                        <!-- Task Repetition Frequency -->
+                        <StackPanel Grid.Column="5" Grid.Row="0" Margin="20 0 0 0" x:Name="FrequencyPanel" Visibility="Collapsed">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Column="0" Grid.Row="0" Text="Interval" Margin="5 0 0 0"></TextBlock>
+                                <TextBox Grid.Column="1" Grid.Row="0" x:Name="TaskInterval" Margin="5 0 0 0" MinWidth="50" TextAlignment="Right" Padding="2"
+                                         MouseEnter="TaskInterval_OnMouseEnter"></TextBox>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                <!-- Task Dates Stack Panel -->
+                <StackPanel Grid.Column="0" Grid.Row="4" Margin="0 15 0 0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <!-- Task Start Date -->
+                        <StackPanel Grid.Column="0" Grid.Row="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Column="0" Grid.Row="0" Text="Dată de început" Margin="0 0 0 5"></TextBlock>
+                                <DatePicker Grid.Column="0" Grid.Row="1" x:Name="TaskStartDate" MouseEnter="TaskStartDate_OnMouseEnter" Padding="5"></DatePicker>
+                            </Grid>
+                        </StackPanel>
+                        <!-- Task End Date -->
+                        <StackPanel Grid.Column="1" Grid.Row="0" Margin="20 0 0 0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Column="0" Grid.Row="0" Text="Dată de sfârșit" Margin="0 0 0 5"></TextBlock>
+                                <DatePicker Grid.Column="0" Grid.Row="1" x:Name="TaskEndDate" MouseEnter="TaskEndDate_OnMouseEnter" Padding="5"></DatePicker>
+                            </Grid>
+                        </StackPanel>
+                        <!-- Task Time -->
+                        <StackPanel Grid.Column="2" Grid.Row="0" Margin="20 0 0 0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Column="0" Grid.Row="0" Text="Ora și minutul" Margin="0 0 0 5"></TextBlock>
+                                <TextBox Grid.Column="0" Grid.Row="1" x:Name="TaskTime" MouseEnter="TaskTime_OnMouseEnter" Padding="5"></TextBox>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                <!-- Task Last And Next Run Stack Panel -->
+                <StackPanel Grid.Column="0" Grid.Row="5" Margin="0 15 0 0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <!-- Task Last Run Label -->
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Ultima iterație" Margin="0 0 10 5"></TextBlock>
+                        <!-- Task Last Run Field -->
+                        <TextBox Grid.Column="0" Grid.Row="1" x:Name="TaskLastRun" IsReadOnly="True" Margin="0 0 10 0" Padding="5"/>
+                        <!-- Task Next Run Label -->
+                        <TextBlock Grid.Column="1" Grid.Row="0" Text="Următoarea iterație" Margin="10 0 0 5"></TextBlock>
+                        <!-- Task Next Run Field -->
+                        <TextBox Grid.Column="1" Grid.Row="1" x:Name="TaskNextRun" IsReadOnly="True" Padding="5" Margin="10 0 0 0"/>
+                    </Grid>
+                </StackPanel>
+                <!-- Save Task Button-->
+                <StackPanel Grid.Column="0" Grid.Row="6" Margin="0 15 0 0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <!-- Update Task Button -->
+                        <Button Grid.Column="0" Grid.Row="0" x:Name="UpdateTaskButton" Content="Actualizează Task" 
+                                Padding="20 5" Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Button.Effect>
+                                <DropShadowEffect Opacity="0.25" Color="#FF252525"/>
+                            </Button.Effect>
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFAEAEAE" Offset="1"/>
+                                    <GradientStop Color="#FFFFF5F5"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+                        <!-- Stop Task Button -->
+                        <Button Grid.Column="2" Grid.Row="0" x:Name="StopTaskButton" Content="{Binding Path=StopTaskBtnText, Mode=OneWay}" 
+                                Padding="20 5" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Center">
+                            <Button.Effect>
+                                <DropShadowEffect Opacity="0.25" Color="#FF252525"/>
+                            </Button.Effect>
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFAEAEAE" Offset="1"/>
+                                    <GradientStop Color="#FFFFF5F5"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <!-- Tips Separator Row 2 -->
+        <Separator Grid.Column="1" Grid.Row="2"></Separator>
+        <!-- Tips Stack Panel Row 3 -->
+        <StackPanel Grid.Column="1" Grid.Row="3">
+            <TextBlock x:Name="TaskTips" TextWrapping="Wrap"></TextBlock>
+        </StackPanel>
+    </Grid>
+</Page>
